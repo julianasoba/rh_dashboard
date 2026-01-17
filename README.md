@@ -1,73 +1,49 @@
-# React + TypeScript + Vite
+# 📊 Dashboard de Recursos Humanos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 📌 Sobre o Projeto
 
-Currently, two official plugins are available:
+Este projeto consiste num Dashboard de Recursos Humanos desenvolvido para uso interno em empresas, com o objetivo de centralizar, organizar e automatizar os principais processos de gestão de colaboradores.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A aplicação melhora a transparência, reduz processos manuais e facilita a comunicação entre RH, chefias, colaboradores e contabilidade, através de um sistema com controlo de acessos por perfil.
 
-## React Compiler
+<br/>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Funcionalidades
+| Gestão de Turnos | Férias e Justificativos | Pagamentos e Descontos |
+| :--- | :---: | ---: |
+| Gerador randómico de turnos|Solicitação de férias com fluxo de aprovação |Visualização do pagamento mensal |
+|Possibilidade de edição manual | Histórico e estado das solicitações | Detalhe de descontos, benefícios e adicionais |
 
-## Expanding the ESLint configuration
+<br/>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tecnologias Utilizadas
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Frontend:** React / TypeScript;
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+**Estilização:** Tailwind CSS;
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Backend:** Node.js (API REST);
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Base de Dados:** Firebase / MongoDB;
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**Autenticação:** JWT + Controlo de acessos por perfil (RBAC);
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+<br/>
+
+## ⚙️ Instalação e Execução
+```bash 
+# Clonar o repositório
+git clone https://github.com/seu-username/dashboard-rh.git
+
+# Instalar dependências
+npm install
+
+# Executar o projecto
+npm run dev
+````
+
+<br/>
+
+## 📍 Estado do Projeto
+
+🚧 Em desenvolvimento — versão MVP
