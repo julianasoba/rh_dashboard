@@ -8,6 +8,7 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarMenu,
+  SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
@@ -24,14 +25,30 @@ export function Sidenavbar() {
           <SidebarGroupContent className="mt-3">
             <SidebarMenu>
               {items.map((item) => (
+                item.title === "Alertas" ||item.title === "Aprovações"  ? (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  
+      <SidebarMenuButton asChild>
+                    
                     <a href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
-                </SidebarMenuItem>
+  <SidebarMenuBadge>25</SidebarMenuBadge>
+</SidebarMenuItem>
+
+                  ) : (
+                     <SidebarMenuItem key={item.title}>
+   <SidebarMenuButton asChild>
+                    
+                    <a href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  )
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
