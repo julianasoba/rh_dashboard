@@ -2,36 +2,75 @@
 
 ### 📌 Sobre o Projeto
 
-Este projeto consiste num Dashboard de Recursos Humanos desenvolvido para uso interno em empresas, com o objetivo de centralizar, organizar e automatizar os principais processos de gestão de colaboradores.
+Dashboard de Recursos Humanos desenvolvido para **uso interno em empresas**, com o objetivo de centralizar, organizar e automatizar os principais processos de gestão de colaboradores.
 
-A aplicação melhora a transparência, reduz processos manuais e facilita a comunicação entre RH, chefias, colaboradores e contabilidade, através de um sistema com controlo de acessos por perfil.
+A aplicação visa reduzir processos manuais, melhorar a transparência entre RH, liderança e colaboradores e facilitar a tomada de decisão através de dados consolidados (KPIs), controlo de acessos e fluxos de aprovação bem definidos.
+
+Este projeto foi desenvolvido com foco em boas práticas de Front-End, organização de código e experiência do utilizador.
+
+<br/>
+
+## 🧠 Principais Conceitos Aplicados
+- Componentização e reutilização de UI
+- Gerenciamento de estado e fluxo de dados
+- Separação de responsabilidades
+- Navegação orientada a dados
+- Regras de negócio reais
 
 <br/>
 
 ## 🚀 Funcionalidades
-| Gestão de Turnos | Férias e Justificativos | Pagamentos e Descontos |
-| :--- | :---: | ---: |
-| Gerador randómico de turnos|Solicitação de férias com fluxo de aprovação |Visualização do pagamento mensal |
-|Possibilidade de edição manual | Histórico e estado das solicitações | Detalhe de descontos, benefícios e adicionais |
+| ✅ Implementadas | 🚧 Em desenvolvimento | 
+| :--- | :---: | 
+| - Estrutura base do dashboard| - Gestão de turnos (geração e edição manual) |
+|- Navegação dinâmica por sidebar | - Solicitação de férias e justificativos com fluxo de aprovação | 
+| - Layout responsivo| - Visualização de pagamentos, descontos e benefícios |
+|- Páginas de overview, colaboradores, aprovações e relatórios (UI) |- Sistema de auditoria/logs de ações | 
+| - Estrutura base do dashboard| - Gestão de turnos (geração e edição manual) |
+|- Navegação dinâmica por sidebar | Autenticação e controlo de acessos por perfil (RBAC)| 
+
+
 
 <br/>
 
 ## 🛠️ Tecnologias Utilizadas
 
-**Frontend:** React / TypeScript;
+**Frontend**
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
 
-**Estilização:** Tailwind CSS;
+**Backend (planejado)**
+- Node.js (API REST)
+- Firebase ou MongoDB
 
-**Backend:** Node.js (API REST);
+**Outros**
+- Git & GitHub
+- ESLint
+- Arquitetura modular
 
-**Base de Dados:** Firebase / MongoDB;
-
-**Autenticação:** JWT + Controlo de acessos por perfil (RBAC);
 
 <br/>
 
+## 📁 Estrutura do Projeto
+
+```bash
+src/
+ ├─ components/   # Componentes reutilizáveis
+ ├─ hooks/        # Hooks personalizados
+ ├─ layout/       # Estrutura base (sidebar, header, etc.)
+ ├─ pages/        # Páginas do dashboard
+ ├─ services/     # Comunicação com API
+ ├─ utils/        # Funções utilitárias
+ ├─ types/        # Tipagens globais
+ ├─ test/         # Testes (em evolução)
+```
+<br/>
+
 ## ⚙️ Instalação e Execução
-```bash 
+
+```bash
 # Clonar o repositório
 git clone https://github.com/seu-username/dashboard-rh.git
 
@@ -40,10 +79,9 @@ npm install
 
 # Executar o projecto
 npm run dev
-````
+```
 
 <br/>
 
-## 📍 Estado do Projeto
-
-🚧 Em desenvolvimento — versão MVP
+## 📍 Estado do Projeto 
+🚧 Em desenvolvimento
