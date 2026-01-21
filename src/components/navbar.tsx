@@ -2,15 +2,18 @@ import {
     Info,
   SearchIcon,
   BellIcon,
-  Sun
+  Sun,
+  Moon
 } from "lucide-react"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group"
+import { useTheme } from "@/hooks/useTheme";
 
 export default function Navbar() {
+   const { theme, toggleTheme } = useTheme();
   return (
     <header className="flex items-center justify-between p-4 border-b">
         <div className="w-1/2">
@@ -24,7 +27,8 @@ export default function Navbar() {
         <nav className="flex items-center gap-2.5">
           <ul className="flex items-center gap-2">
                    <li className="flex items-center">
-                <button><Sun /></button>
+                    
+                <button onClick={toggleTheme} className="cursor-pointer">{theme === "light" ? <Moon /> : <Sun/>}</button>
             </li>
             <li>
                 <a href=""><Info /></a>
