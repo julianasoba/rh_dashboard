@@ -1,10 +1,21 @@
 import CardComp from "@/components/card";
 import Heading from "@/components/heading";
-import { DataTableDemo } from "@/components/table";
 import { Card } from "@/components/ui/card";
+import { CreateUserModal } from "@/components/user/profile/modal";
+import { DataUserTable } from "@/components/user/table/table";
+import { useState } from "react";
+
+
 export default function Employees() {
+  const [open, setOpen] = useState(false);
+
+  const handleOpenModalToCreateUser =()=>{
+    console.log("FOI CHAMADO NO PAI");
+    setOpen(true)
+  }
   return (
-    <div className="h-full">
+    <>
+    <div className="flex flex-col">
       <Heading title="Olá, Martin Dala" text="Funcionários Cadastrados">
      <div className="flex items-center gap-4 mt-2">
 
@@ -19,12 +30,15 @@ export default function Employees() {
       </CardComp>
      </div>
       </Heading>
-      <div className=" py-6 bg-green">
+      <div className="pt-6 bg-green">
              <Card className="p-4 pb-0 rounded-xs w-full">
-    <DataTableDemo/>
+    <DataUserTable onCreateUser={handleOpenModalToCreateUser}/>
     </Card>
       </div>
 
       </div>
+
+     {open && <CreateUserModal open={open} onClose={() => setOpen(false)}/>}
+      </>
   )
 }

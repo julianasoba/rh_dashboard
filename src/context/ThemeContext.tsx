@@ -18,10 +18,9 @@ export const ThemeProvider =({children}: {children: ReactNode}) => {
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const initial = saved || (prefersDark ? "dark" : "light");
 
-  // Aplica a classe .dark no HTML logo de cara
   document.documentElement.classList.toggle("dark", initial === "dark");
 
-  return initial; // retorna o valor inicial do estado
+  return initial; 
 });
 
     const toggleTheme = () => {
