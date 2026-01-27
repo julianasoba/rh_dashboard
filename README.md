@@ -42,12 +42,12 @@ Este projeto foi desenvolvido com foco em boas pr√°ticas de Front-End, organiza√
 - Tailwind CSS
 
 **Backend (planejado)**
-- Node.js (API REST)
-- Firebase ou MongoDB
+- Firebase
 
 **Outros**
 - Git & GitHub
 - ESLint
+- Axios
 - Arquitetura modular
 
 
