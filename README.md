@@ -7,6 +7,9 @@ Dashboard de Recursos Humanos desenvolvido para **uso interno em empresas**, com
 A aplicação visa reduzir processos manuais, melhorar a transparência entre RH, liderança e colaboradores e facilitar a tomada de decisão através de dados consolidados (KPIs), controlo de acessos e fluxos de aprovação bem definidos.
 
 Este projeto foi desenvolvido com foco em boas práticas de Front-End, organização de código e experiência do utilizador.
+Dashboard interno para gestão de colaboradores, faltas, férias e escalas de trabalho.
+Pensado para pequenas e médias empresas, com foco em clareza, controle e boa UX para gestores e RH.
+
 
 <br/>
 
@@ -36,13 +39,21 @@ Este projeto foi desenvolvido com foco em boas práticas de Front-End, organiza�
 ## 🛠️ Tecnologias Utilizadas
 
 **Frontend**
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
+
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
+
+![TypeScript](https://img.shields.io/badge/TypeScript-4.x-3178C6?logo=typescript&logoColor=white)
+
+![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)
+
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-38B2AC?logo=tailwindcss&logoColor=white)
+
+![Jest](https://img.shields.io/badge/Jest-Testing-C21325?logo=jest&logoColor=white)
+
 
 **Backend (planejado)**
-- Firebase
+
+![Firebase](https://img.shields.io/badge/Firebase-Firestore-FFCA28?logo=firebase&logoColor=black)
 
 **Outros**
 - Git & GitHub
@@ -70,9 +81,18 @@ src/
 
 ## ⚙️ Instalação e Execução
 
+### Pré-requisitos
+
+- Node.js >= 18
+  
+- npm ou yarn
+  
 ```bash
 # Clonar o repositório
 git clone https://github.com/seu-username/dashboard-rh.git
+
+# Entre na pasta
+cd rh_dashboard
 
 # Instalar dependências
 npm install
@@ -83,5 +103,35 @@ npm run dev
 
 <br/>
 
+
+### Configuração do Firebase (🔥 MUITO importante)
+
+```md
+## 🔥 Firebase
+
+Este projeto utiliza **Firebase Firestore** como backend.
+
+### Configuração
+
+1. Crie um projeto no Firebase
+2. Ative o Firestore Database
+3. Crie um arquivo `.env` na raiz do projeto:
+
+env
+VITE_FIREBASE_API_KEY=your_key
+VITE_FIREBASE_AUTH_DOMAIN=your_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+````
+
+<br/>
+
 ## 📍 Estado do Projeto 
 🚧 Em desenvolvimento
+
+- Home / Dashboard
+  
+- Modal de criação de colaborador
+  
+- Calendário de folgas
+
+(Em breve: link para versão deployada)
