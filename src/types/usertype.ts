@@ -5,8 +5,10 @@ export interface UserType {
   email: string
   role: "admin" | "manager" | "employee"
 
-  active: boolean
+  active?: boolean
   createdAt: Timestamp
+  salary?:number
+  contract?: "tc" | "ti"
 
   position?: string
   department?: string
