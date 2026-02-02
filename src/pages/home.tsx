@@ -2,6 +2,7 @@ import CalendarUI from "@/components/calendar";
 import CardComp from "@/components/card";
 import Charthome from "@/components/charthome";
 import Heading from "@/components/heading";
+import HomeSummaryCards from "@/components/home/sumarycards";
 import List from "@/components/list";
 import { DataTableDemo } from "@/components/table";
 import { Button } from "@/components/ui/button";
@@ -9,6 +10,27 @@ import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { list } from "@/utils/list";
 import { Download } from "lucide-react";
+
+
+
+const data ={
+   shift: {
+      date: "2 de Fevereiro de 2025",
+      time: "09:10 - 18:00",
+      team: ["Joana", "Pedro"],
+    },
+    teamSummary: {
+      total: 7,
+  kitchen: 5,
+  service: 8,
+    },
+    pendingPurchase: {
+      status: "pending",
+      department: "kitchen",
+    },
+}
+
+
 
 
 
@@ -21,31 +43,8 @@ export default function Home() {
       <Download/> Download
     </Button>
       </Heading>
-<div className="grid grid-cols-4 gap-4 mt-6">
-<CardComp title="Turno de Hoje">
-  <div>
-    <p className="text-sm"><strong>Data:</strong> 12 de Junho de 2025</p>
-    <p className="text-sm"><strong>Horário: </strong>09:00 - 18:00</p>
-    <p className="text-sm"><strong>Equipe A: </strong> Juliana, Sonia, Carlos</p>
-  </div>
-</CardComp>
-<CardComp title="Resumo da Equipa">
-  <div>
-        <p className="text-sm"><strong>Total:</strong> 7 funcionários</p>
-    <p className="text-sm"><strong>Cozinha: </strong> 3</p>
-    <p className="text-sm"><strong>Atendimento: </strong> 7</p>
-  </div>
-</CardComp>
-<CardComp title="Compras Pendentes">
-  <div>
-        <p className="text-sm"><strong>Status:</strong> Solicitação de Compra</p>
-    <p className="text-sm"><strong>Pedido da: </strong> Cozinha</p>
-  </div>
-</CardComp>
-<CardComp title="Resumo de Vendas"></CardComp>
-</div>
-
-    <div className="grid grid-cols-4 py-6 ">
+<HomeSummaryCards shift={data.shift} teamSummary={data.teamSummary} pendingPurchase={data.pendingPurchase} />
+       <div className="grid grid-cols-4 py-6 ">
       <div className="col-span-3 p-2">
 <Charthome/>
 

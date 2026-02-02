@@ -1,5 +1,5 @@
-import Navbar from '@/components/navbar'
-import { Sidenavbar } from '@/components/sidebar'
+import Navbar from '@/layout/navbar'
+import { Sidenavbar } from '@/layout/sidebar'
 import { SidebarProvider,  } from "@/components/ui/sidebar"
 
 

@@ -1,6 +1,5 @@
 import { Timestamp } from "firebase/firestore"
 export interface UserType {
-  id: string
   name: string
   email: string
   role: "admin" | "manager" | "employee"

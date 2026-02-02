@@ -39,6 +39,14 @@ const columns: ColumnDef<UserType>[] = [
       )
     },
   },
+      {
+    accessorKey: "position",
+    header: () => {
+      return (
+    <h3>Turno</h3>
+      )
+    },
+  },
   
    /* {
     accessorKey: "workSchedule",
@@ -85,9 +93,11 @@ const columns: ColumnDef<UserType>[] = [
   {
     id: "actions",
     enableHiding: false,
+  
     cell: ({ row }) => {
-      const payment = row.original
-
+       // const payment = row.original
+      
+console.log("ROW", row);
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -99,7 +109,7 @@ const columns: ColumnDef<UserType>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
+             // onClick={() => navigator.clipboard.writeText(payment.id)}
             >
               Copy payment ID
             </DropdownMenuItem>
