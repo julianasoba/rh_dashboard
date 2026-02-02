@@ -27,6 +27,23 @@ import { columns } from "./columns"
 import { users } from "@/mock/datauser";
 import { Plus } from "lucide-react"
 import type { DataUserTableProps } from "@/types/button"
+import { Field, FieldLabel } from "@/components/ui/field"
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
 
 
 export function DataUserTable({onCreateUser}: DataUserTableProps) {
@@ -125,29 +142,40 @@ export function DataUserTable({onCreateUser}: DataUserTableProps) {
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 pt-4 py-4">
+      <div className="flex items-center justify-end space-x-2  py-4">
            <div className="text-muted-foreground flex-1 text-sm">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length}  users.
         </div>
-        <div className="space-x-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Previous
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Next
-          </Button>
-        </div>
+    <div className="flex items-center justify-between gap-4">
+      <Field orientation="horizontal" className="w-fit">
+        <FieldLabel htmlFor="select-rows-per-page">Rows per page</FieldLabel>
+        <Select defaultValue="25">
+          <SelectTrigger className="w-20" id="select-rows-per-page">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent align="start">
+            <SelectGroup>
+              <SelectItem value="10">5</SelectItem>
+              <SelectItem value="25">10</SelectItem>              
+              <SelectItem value="50">25</SelectItem>
+              <SelectItem value="100">50</SelectItem>
+
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      </Field>
+      <Pagination className="mx-0 w-auto">
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious href="#" />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationNext href="#" />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+    </div>
       </div>
     </div>
   )
