@@ -1,4 +1,4 @@
-import type { UserType } from "@/types/usertype";
+import type { UserType } from "@/types/user.types";
 import { Timestamp } from "firebase/firestore"; // ou onde você estiver usando Timestamp
 
 export const users: UserType[] = [

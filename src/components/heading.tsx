@@ -1,4 +1,4 @@
-import type { HeadingProps } from "@/types/headingtype";
+import type { HeadingProps } from "@/types/heading.types";
 
 
 export default function Heading({title,text,children}:HeadingProps) {

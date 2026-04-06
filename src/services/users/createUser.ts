@@ -1,5 +1,5 @@
 import db from "@/firebase/firestore";
-import type { UserType } from "@/types/usertype";
+import type { UserType } from "@/types/user.types";
 import { addDoc, collection, getDocs, Timestamp } from "firebase/firestore";
 
 export const createUserInFirestore = async (user:  Omit<UserType, "id" | "createdAt">) => {

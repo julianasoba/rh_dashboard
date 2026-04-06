@@ -1,35 +1,28 @@
 import CardComp from "@/components/card";
 import { useUsers } from "@/hooks/useUsers";
-import { Skeleton } from "../ui/skeleton";
+import { Skeleton } from "../../../components/ui/skeleton";
 
-type Shift = {
-  date: string;
-  time: string;
-  team: string[];
-};
 
-type TeamSummary = {
-  total: number;
-  kitchen: number;
-  service: number;
-};
 
-type PendingPurchase = {
-  status: string;
-  department: string;
-};
 
-type Props = {
-  shift: Shift;
-  teamSummary: TeamSummary;
-  pendingPurchase: PendingPurchase;
-};
 
-export default function HomeSummaryCards({
-  shift,
-  teamSummary,
-  pendingPurchase,
-}: Props) {
+const data ={
+   shift: {
+      date: new Intl.DateTimeFormat("pt-PT", { dateStyle: "long" }).format(new Date()),
+      time: "09:10 - 18:00",
+      team: ["Joana", "Pedro"],
+    },
+    teamSummary: {
+      total: 7,
+  kitchen: 5,
+  service: 8,
+    },
+    pendingPurchase: {
+      status: "pending",
+      department: "kitchen",
+    },
+}
+export default function HomeSummaryCards() {
 
       const { data: users, isLoading, isError, error } = useUsers();
   if (isError) return <p>Erro ao carregar produtos: {error.message}</p>;
@@ -40,34 +33,34 @@ export default function HomeSummaryCards({
     <div className="grid grid-cols-4 gap-4 mt-6">
       <CardComp title="Turno de Hoje">
         <p className="text-sm">
-          <strong>Data:</strong>{isLoading && <Skeleton className="h-4 w-[150px]" />} {shift.date}
+          <strong>Data:</strong>{isLoading && <Skeleton className="h-4 w-37.5" />} {data.shift.date}
         </p>
         <p className="text-sm">
-          <strong>Horário:</strong> {shift.time}
+          <strong>Horário:</strong> {data.shift.time}
         </p>
         <p className="text-sm">
-          <strong>Equipe:</strong> {shift.team.join(", ")}
+          <strong>Equipe:</strong> {data.shift.team.join(", ")}
         </p>
       </CardComp>
 
       <CardComp title="Resumo da Equipa">
         <p className="text-sm">
-          <strong>Total:</strong> {teamSummary.total} funcionários
+          <strong>Total:</strong> {data.teamSummary.total} funcionários
         </p>
         <p className="text-sm">
-          <strong>Cozinha:</strong> {teamSummary.kitchen}
+          <strong>Cozinha:</strong> {data.teamSummary.kitchen}
         </p>
         <p className="text-sm">
-          <strong>Atendimento:</strong> {teamSummary.service}
+          <strong>Atendimento:</strong> {data.teamSummary.service}
         </p>
       </CardComp>
 
       <CardComp title="Compras Pendentes">
         <p className="text-sm">
-          <strong>Status:</strong> {pendingPurchase.status}
+          <strong>Status:</strong> {data.pendingPurchase.status}
         </p>
         <p className="text-sm">
-          <strong>Pedido da:</strong> {pendingPurchase.department}
+          <strong>Pedido da:</strong> {data.pendingPurchase.department}
         </p>
       </CardComp>
 

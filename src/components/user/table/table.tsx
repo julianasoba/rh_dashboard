@@ -24,9 +24,8 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { columns } from "./columns"
-import { users } from "@/mock/datauser";
 import { Plus } from "lucide-react"
-import type { DataUserTableProps } from "@/types/button"
+import type { DataUserTableProps } from "@/types/button.types"
 import { Field, FieldLabel } from "@/components/ui/field"
 import {
   Pagination,
@@ -46,7 +45,7 @@ import {
 
 
 
-export function DataUserTable({onCreateUser}: DataUserTableProps) {
+export function DataUserTable({onCreateUser, users}: DataUserTableProps) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -144,7 +143,6 @@ export function DataUserTable({onCreateUser}: DataUserTableProps) {
       </div>
       <div className="flex items-center justify-end space-x-2  py-4">
            <div className="text-muted-foreground flex-1 text-sm">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length}  users.
         </div>
     <div className="flex items-center justify-between gap-4">
