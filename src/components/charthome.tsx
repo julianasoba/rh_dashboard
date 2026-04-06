@@ -40,6 +40,7 @@ label: "Total de Faltas",
 
 export default function Charthome() {
   return (
+    <div className="col-span-3 p-2">
         <Card className="rounded-sm">
       <CardHeader>
         <CardTitle>Gráfico de Faturamento Mensal e Faltas de Funcionários</CardTitle>
@@ -68,6 +69,7 @@ export default function Charthome() {
     </ChartContainer>
       </CardContent>
      </Card>
+     </div>
   )
 }
 

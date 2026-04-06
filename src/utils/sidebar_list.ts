@@ -1,4 +1,4 @@
-import { Archive, BarChart2, Bell, Calendar, CheckCircle, CircleQuestionMark, FilePieChart,  Home,  Settings, TreePalm, Users } from "lucide-react"
+import { Archive, BarChart2, Bell, Calendar,Building2, CheckCircle, CircleQuestionMark, FilePieChart,  Home,  Settings, TreePalm, Users } from "lucide-react"
 
 export const items = [
  { title: "Home", url: "/", icon: Home },
@@ -13,6 +13,7 @@ export const items = [
 ];
 
 export const footer = [
+  { title: "Perfil de Empresa", url: "/company-profile", icon:Building2 },
   { title: "Configurações", url: "/settings", icon: Settings },
  {title: "Centro de Ajuda", icon:   CircleQuestionMark,url: "/help",
 }

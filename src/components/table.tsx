@@ -24,6 +24,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
+import { Card } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -191,6 +192,7 @@ export function DataTableDemo() {
   })
 
   return (
+     <Card className="p-4 rounded-xs col-span-4 mt-4">
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
@@ -274,5 +276,6 @@ export function DataTableDemo() {
         </div>
       </div>
     </div>
+    </Card>
   )
 }
