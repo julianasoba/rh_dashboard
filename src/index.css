@@ -117,4 +117,8 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .loader{
+    @apply animate-[spin_linear_2s_infinite];
+  }
 }

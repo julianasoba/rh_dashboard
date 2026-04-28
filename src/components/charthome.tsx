@@ -1,76 +1,93 @@
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
-
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-    ChartLegend,
-  ChartLegendContent,
   type ChartConfig,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-
-
+} from "@/components/ui/card";
+import { TrendingUp, TrendingDown } from "lucide-react";
 
 const chartData = [
-  { month: "January", faturamento: 150, faltas: 80 },
-  { month: "February", faturamento: 305, faltas: 200 },
-  { month: "March", faturamento: 237, faltas: 120 },
-  { month: "April", faturamento: 73, faltas: 190 },
-  { month: "May", faturamento: 209, faltas: 130 },
-  { month: "June", faturamento: 214, faltas: 140 },
-]
+  { month: "Nov", faturacao: 8400 },
+  { month: "Dez", faturacao: 11200 },
+  { month: "Jan", faturacao: 7800 },
+  { month: "Fev", faturacao: 9100 },
+  { month: "Mar", faturacao: 10300 },
+  { month: "Abr", faturacao: 9800 },
+];
 
 const chartConfig = {
-  faturamento: {
-    label: "Faturamento(€)",
-    color: "#2563eb",
+  faturacao: {
+    label: "Faturação (€)",
+    color: "var(--chart-1)",
   },
-  faltas: {
-label: "Total de Faltas",
-    color: "#60a5fa",
-  },
-} satisfies ChartConfig
+} satisfies ChartConfig;
+
+const last = chartData[chartData.length - 1].faturacao;
+const prev = chartData[chartData.length - 2].faturacao;
+const diff = (((last - prev) / prev) * 100).toFixed(1);
+const isUp = last >= prev;
 
 export default function Charthome() {
   return (
-    <div className="col-span-3 p-2">
-        <Card className="rounded-sm">
+    <Card className="col-span-3 rounded-md">
       <CardHeader>
-        <CardTitle>Gráfico de Faturamento Mensal e Faltas de Funcionários</CardTitle>
+        <CardTitle>Faturação Mensal</CardTitle>
         <CardDescription>
-          Demostração das vendas mensais em euros e o total de faltas dos funcionários
+          Últimos 6 meses · dados ilustrativos
         </CardDescription>
       </CardHeader>
       <CardContent>
-
-    <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-      <BarChart accessibilityLayer data={chartData}>
-        <CartesianGrid vertical={false} />
-        <XAxis
-          dataKey="month"
-          tickLine={false}
-          tickMargin={10}
-          axisLine={false}
-          tickFormatter={(value) => value.slice(0, 3)}
-        />
-        <ChartTooltip content={<ChartTooltipContent />} />
-        <ChartLegend content={<ChartLegendContent />} />
-        <ChartTooltip content={<ChartTooltipContent />} />
-        <Bar dataKey="faturamento" fill="var(--color-faturamento)" radius={4} />
-        <Bar dataKey="faltas" fill="var(--color-faltas)" radius={4} />
-      </BarChart>
-    </ChartContainer>
+        <ChartContainer config={chartConfig} className="min-h-55 w-full">
+          <BarChart accessibilityLayer data={chartData}>
+            <CartesianGrid vertical={false} />
+            <XAxis
+              dataKey="month"
+              tickLine={false}
+              tickMargin={10}
+              axisLine={false}
+            />
+            <YAxis
+              tickLine={false}
+              axisLine={false}
+              tickMargin={8}
+              tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`}
+            />
+            <ChartTooltip
+              content={
+                <ChartTooltipContent
+                  formatter={(value) =>
+                    new Intl.NumberFormat("pt-PT", {
+                      style: "currency",
+                      currency: "EUR",
+                    }).format(value as number)
+                  }
+                />
+              }
+            />
+            <Bar dataKey="faturacao" fill="var(--color-faturacao)" radius={4} />
+          </BarChart>
+        </ChartContainer>
+        <div className="flex items-center gap-1.5 mt-3 text-sm">
+          {isUp ? (
+            <TrendingUp className="h-4 w-4 text-green-500" />
+          ) : (
+            <TrendingDown className="h-4 w-4 text-red-500" />
+          )}
+          <span className={isUp ? "text-green-500" : "text-red-500"}>
+            {isUp ? "+" : ""}{diff}%
+          </span>
+          <span className="text-muted-foreground">vs mês anterior</span>
+        </div>
       </CardContent>
-     </Card>
-     </div>
-  )
+    </Card>
+  );
 }
-
 
