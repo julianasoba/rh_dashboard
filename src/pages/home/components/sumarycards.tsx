@@ -1,74 +1,71 @@
-import CardComp from "@/components/card";
-import { useUsers } from "@/hooks/useUsers";
-import { Skeleton } from "../../../components/ui/skeleton";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useHome } from "@/hooks/useHome";
+import { Users, UserCheck, UserX, AlertTriangle } from "lucide-react";
 
-
-
-
-
-const data ={
-   shift: {
-      date: new Intl.DateTimeFormat("pt-PT", { dateStyle: "long" }).format(new Date()),
-      time: "09:10 - 18:00",
-      team: ["Joana", "Pedro"],
-    },
-    teamSummary: {
-      total: 7,
-  kitchen: 5,
-  service: 8,
-    },
-    pendingPurchase: {
-      status: "pending",
-      department: "kitchen",
-    },
-}
 export default function HomeSummaryCards() {
+  const { stats, isLoading } = useHome();
 
-      const { data: users, isLoading, isError, error } = useUsers();
-  if (isError) return <p>Erro ao carregar produtos: {error.message}</p>;
+  const cards = [
+    {
+      title: "A trabalhar hoje",
+      value: stats?.workingToday.length ?? 0,
+      description: stats?.workingToday.map(u => u.name.split(" ")[0]).join(", ") || "—",
+      icon: UserCheck,
+      color: "text-green-500",
+    },
+    {
+      title: "De folga hoje",
+      value: stats?.offToday.length ?? 0,
+      description: stats?.offToday.map(u => u.name.split(" ")[0]).join(", ") || "—",
+      icon: UserX,
+      color: "text-amber-500",
+    },
+    {
+      title: "Total activos",
+      value: stats?.total ?? 0,
+      description: `${stats?.byDepartment.kt.length ?? 0} cozinha · ${stats?.byDepartment.wt.length ?? 0} atendimento · ${stats?.byDepartment.br.length ?? 0} bar`,
+      icon: Users,
+      color: "text-blue-500",
+    },
+    {
+      title: "Faltas esta semana",
+      value: "—",
+      description: "Em breve",
+      icon: AlertTriangle,
+      color: "text-red-400",
+    },
+  ];
 
-
-  console.log(users)
   return (
-    <div className="grid grid-cols-4 gap-4 mt-6">
-      <CardComp title="Turno de Hoje">
-        <p className="text-sm">
-          <strong>Data:</strong>{isLoading && <Skeleton className="h-4 w-37.5" />} {data.shift.date}
-        </p>
-        <p className="text-sm">
-          <strong>Horário:</strong> {data.shift.time}
-        </p>
-        <p className="text-sm">
-          <strong>Equipe:</strong> {data.shift.team.join(", ")}
-        </p>
-      </CardComp>
-
-      <CardComp title="Resumo da Equipa">
-        <p className="text-sm">
-          <strong>Total:</strong> {data.teamSummary.total} funcionários
-        </p>
-        <p className="text-sm">
-          <strong>Cozinha:</strong> {data.teamSummary.kitchen}
-        </p>
-        <p className="text-sm">
-          <strong>Atendimento:</strong> {data.teamSummary.service}
-        </p>
-      </CardComp>
-
-      <CardComp title="Compras Pendentes">
-        <p className="text-sm">
-          <strong>Status:</strong> {data.pendingPurchase.status}
-        </p>
-        <p className="text-sm">
-          <strong>Pedido da:</strong> {data.pendingPurchase.department}
-        </p>
-      </CardComp>
-
-      <CardComp title="Resumo de Vendas">
-        <p className="text-sm text-muted-foreground">
-          Em breve
-        </p>
-      </CardComp>
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+      {cards.map((card) => (
+        <Card key={card.title} className="rounded-md">
+          <CardHeader className="pb-2">
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-sm font-medium text-muted-foreground">
+                {card.title}
+              </CardTitle>
+              <card.icon className={`h-4 w-4 ${card.color}`} />
+            </div>
+          </CardHeader>
+          <CardContent>
+            {isLoading ? (
+              <div className="space-y-2">
+                <Skeleton className="h-7 w-12" />
+                <Skeleton className="h-3 w-full" />
+              </div>
+            ) : (
+              <>
+                <p className="text-2xl font-bold">{card.value}</p>
+                <p className="text-xs text-muted-foreground mt-1 truncate">
+                  {card.description}
+                </p>
+              </>
+            )}
+          </CardContent>
+        </Card>
+      ))}
     </div>
   );
 }
