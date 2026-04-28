@@ -1,20 +1,22 @@
-import { Timestamp } from "firebase/firestore"
+import { Timestamp } from "firebase/firestore";
+
+export type Department = "kitchen" | "waitress" | "bar" | "management";
+export type WorkDay = "Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat" | "Sun";
+export type UserRole = "admin" | "manager" | "employee";
+
 export interface UserType {
-  name: string
-  email: string
-  role: "admin" | "manager" | "employee"
-
-  active?: boolean
-  createdAt: Timestamp
-  salary?:number
-  contract?: "tc" | "ti"
-
-  position?: string
-  department?: string
-
+  id: string;
+  name: string;
+  email: string;
+  role: UserRole;
+  active?: boolean;
+  createdAt: Timestamp;
+  salary?: number;
+  position?: string;
+  department?: Department;
   workSchedule?: {
-    start: string 
-    end: string 
-    workDays: ("Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat" | "Sun")[]
-  }
+    start: string;
+    end: string;
+    workDays: WorkDay[];
+  };
 }
