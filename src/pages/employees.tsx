@@ -18,6 +18,9 @@ export default function Employees() {
   }
 
   const usersFiltered = users?.filter(user => user.role === "employee") ?? [];
+  const isDepartment = (department: unknown, expected: string) =>
+    String(department ?? "").toLowerCase() === expected;
+
   return (
     <>
     <div className="flex flex-col">
@@ -27,16 +30,16 @@ export default function Employees() {
           <p className="text-sm"><strong>Funcionários:</strong> {usersFiltered?.length ?? 0} no total</p>
       </CardComp>
        <CardComp title="Cozinha">
-          <p className="text-sm"><strong>Departamento:</strong> {usersFiltered?.filter(user => user.department === "kt").length ?? 0}</p>
+          <p className="text-sm"><strong>Departamento:</strong> {usersFiltered?.filter(user => isDepartment(user.department, "kt")).length ?? 0}</p>
       </CardComp>
         <CardComp title="Atendimento">
-          <p className="text-sm"><strong>Departamento:</strong> {usersFiltered?.filter(user => user.department === "wt").length ?? 0}</p>
+          <p className="text-sm"><strong>Departamento:</strong> {usersFiltered?.filter(user => isDepartment(user.department, "wt")).length ?? 0}</p>
       </CardComp>
      </div>
       </Heading>
       <div className="pt-6 bg-green">
              <Card className="p-4 pb-0 rounded-xs w-full">
-              {isLoading ? <Skeleton className="h-[200px] w-full" /> :
+              {isLoading ? <Skeleton className="h-50 w-full" /> :
               <DataUserTable onCreateUser={handleOpenModalToCreateUser} users={usersFiltered ?? []}/>}
     </Card>
       </div>
