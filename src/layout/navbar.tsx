@@ -6,9 +6,12 @@ import {
 } from "@/components/ui/input-group";
 import { useTheme } from "@/hooks/useTheme";
 import { DropdownNavbar } from "@/components/user/dropdown";
+import { useAuth } from "@/hooks/useAuth";
+import { getInitials } from "@/utils/splitname";
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
+  const {user} = useAuth();
   return (
     <header className="flex items-center justify-between p-4 border-b">
       <div className="w-1/2">
@@ -29,14 +32,14 @@ export default function Navbar() {
         </ul>
         <div className="flex items-center">
           <button className="w-6 h-6 rounded-full border dark:border-white border-black flex items-center justify-center p-2">
-            <p className="text-xs">JS</p>
+            <p className="text-xs">{getInitials(user?.name as string)}</p>
           </button>
 
           <DropdownNavbar>
             <span className="flex-col flex">
-              <strong className="text-sm">Martin Dala</strong>
+              <strong className="text-sm">{user?.name}</strong>
               <p className="text-[0.625rem] text-muted-foreground">
-                Admin / RH
+                {user?.role === "admin" ? "Administrador" : "Colaborador"}
               </p>
             </span>
           </DropdownNavbar>

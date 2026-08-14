@@ -1,13 +1,16 @@
 import CardComp from "@/components/card";
-import { ChartBarDefault } from "@/components/chartkpis";
+import { ChartBarDefault } from "@/components/overview/chartkpis";
 import Heading from "@/components/heading";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
 import { Download, Rocket} from "lucide-react";
 
 export default function Overview() {
+     const { user } = useAuth();
+   
   return (
      <div className="h-full">
-              <Heading title="Olá, Martin Dala" text="Overview geral do Negócio">
+               <Heading title={`Olá, ${user?.name}`} text="Overview geral do Negócio">
              <div className="flex items-center gap-4 mt-2">
              <Button variant="outline" size="sm">
       <Download/> Adicionar Income

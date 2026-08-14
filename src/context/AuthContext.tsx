@@ -33,7 +33,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser({
           uid: firebaseUser.uid,
           email: firebaseUser.email,
-          name: firebaseUser.displayName,
+          name: docSnap.exists() ? docSnap.data().name : 'User',
           role,
         });
       } else {

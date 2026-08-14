@@ -1,4 +1,4 @@
-import { fetchUsers } from "@/services/users/createUser";
+import { fetchUsers } from "@/services/users/users.service";
 import type { UserType } from "@/types/user.types";
 import { useQuery } from "@tanstack/react-query";
 

@@ -1,5 +1,4 @@
 import Heading from '@/components/heading'
-import { DataTableDemo } from '@/components/table'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Send } from 'lucide-react'
@@ -27,7 +26,7 @@ export default function Reports() {
              </div>
               </Heading>
                       <Card className="p-4 rounded-xs  mt-4">
-    <DataTableDemo/>
+   {/* <DataTableDemo/>/*/}
     </Card>
               </div>
   )

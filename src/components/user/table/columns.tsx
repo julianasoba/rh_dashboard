@@ -35,7 +35,7 @@ return(
   },
   {
     accessorKey: "department",
-    header: () => <h3>Cargo</h3>,
+    header: () => <h3>Função</h3>,
         cell: ({ row }) => {
       const role = row.getValue("department")
 

@@ -15,7 +15,8 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/components/ui/chart"
-import { Button } from "./ui/button"
+import { Button } from "../ui/button"
+import { months } from "@/utils/months"
 export const description = "A bar chart"
 const chartData = [
   { month: "January", desktop: 186 },
@@ -32,11 +33,18 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 export function ChartBarDefault() {
+
+  const currentDate = new Date().getMonth() == months.length -1
+    ? `${months[months.length - 1]} ${new Date().getFullYear()}`
+    : `${months[new Date().getMonth()]} ${new Date().getFullYear()}`;
+
+
+  
   return (
     <Card>
       <CardHeader>
         <CardTitle>Ganhos Mensais</CardTitle>
-        <CardDescription>January - Current 2024</CardDescription>
+        <CardDescription>January -  {currentDate}</CardDescription>
         <CardAction>
             <Button size="sm">
                 View Month

@@ -10,7 +10,7 @@ export const users: UserType[] = [
     active: true,
     createdAt: Timestamp.fromDate(new Date("2023-01-15")),
     position: "CTO",
-    department: "Technology",
+    department: "Technology" as UserType["department"],
     workSchedule: {
       start: "09:00",
       end: "18:00",
@@ -25,7 +25,7 @@ export const users: UserType[] = [
     active: true,
     createdAt: Timestamp.fromDate(new Date("2023-03-10")),
     position: "Project Manager",
-    department: "Operations",
+    department: "Operations" as UserType["department"],
     workSchedule: {
       start: "08:00",
       end: "17:00",
@@ -41,7 +41,7 @@ export const users: UserType[] = [
     active: false,
     createdAt: Timestamp.fromDate(new Date("2022-11-05")),
     position: "Frontend Developer",
-    department: "Technology",
+    department: "Technology" as UserType["department"],
     workSchedule: {
       start: "09:00",
       end: "18:00",
@@ -57,15 +57,13 @@ export const users: UserType[] = [
     active: true,
     createdAt: Timestamp.fromDate(new Date("2023-06-01")),
     position: "QA Analyst",
-    department: "Technology",
+    department: "Technology" as UserType["department"],
     workSchedule: {
       start: "09:00",
       end: "17:00",
       workDays: ["Mon", "Tue", "Wed", "Thu", "Fri"],
     },
   },
-
-
 
   {
     id: "10",
@@ -75,7 +73,7 @@ export const users: UserType[] = [
     active: true,
     createdAt: Timestamp.fromDate(new Date("2023-09-05")),
     position: "Operations Manager",
-    department: "Operations",
+    department: "Operations" as UserType["department"],
     workSchedule: {
       start: "08:00",
       end: "16:00",
