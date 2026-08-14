@@ -1,8 +1,8 @@
 import CalendarUI from "@/components/calendar";
-import Charthome from "@/components/charthome";
 import {EmployeeTable } from "@/components/table";
 
 import { useUsers } from "@/hooks/useUsers";
+import Charthome from "./charthome";
 
 export default function HomeContent() {
    const { data: users, isLoading, error } = useUsers();
